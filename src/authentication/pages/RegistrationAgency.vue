@@ -227,9 +227,7 @@ export default {
       }
     },
     async handleRegister(){
-      console.log(this.agency.RUC);
-      if(this.$refs.payForm.validate())
-      {
+      if(this.$refs.payForm.validate()) {
         await AuthService.registerAgency(this.agency);
       }
       this.closePayDialog();
