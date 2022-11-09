@@ -122,15 +122,13 @@
             <v-list>
               <v-subheader class="title font-weight-bold pl-0"> Reference Videos </v-subheader>
               <v-row class="justify-center">
-                <v-col class="d-flex child-flex ">
-                  <video-embed :src="service.video"></video-embed>
-                  <v-img
-                      :src= service.video
-                      :lazy-src="`https://www.google.com/url?sa=i&url=https%3A%2F%2Fdefinicion.de%2Fperfil-de-usuario%2F&psig=AOvVaw088rXtThQz9GDWFPaNwx1G&ust=1637556985474000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNjw5aXVqPQCFQAAAAAdAAAAABAD`"
-                      aspect-ratio="1"
-                      max-height="400"
-                      class="grey lighten-2"
-                  ></v-img>
+                <v-col class="d-flex child-flex" >
+                  <div>
+                    <section>
+                      <iframe marginwidth="auto" width="800" height="450" :src="service.video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </section>
+                  </div>
+                  <!--<video-embed style="min-height: 400px" :src="service.video"></video-embed>-->
                 </v-col>
               </v-row>
             </v-list>
