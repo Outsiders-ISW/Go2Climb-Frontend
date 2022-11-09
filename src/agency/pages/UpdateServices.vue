@@ -57,6 +57,14 @@
                     hide-details
                     required
                     outlined
+                    class="rounded-0">
+                </v-text-field>
+                <v-text-field
+                    v-model="updateService.video"
+                    placeholder="Reference video (optional)"
+                    solo dense
+                    hide-details
+                    outlined
                     class="rounded-br-xl rounded-t-0 rounded-l-0">
                 </v-text-field>
               </v-col>
@@ -191,6 +199,7 @@ export default {
       location: '',
       isOffer: false,
       photos: '',
+      video: '',
       description: '',
       date: null,
       score: 0,
@@ -209,11 +218,14 @@ export default {
       this.updateService.price = response.data.price
       this.updateService.location = response.data.location
       this.updateService.photos = response.data.photos
+      this.updateService.video = response.data.video
       this.updateService.newPrice = response.data.newPrice
       this.updateService.score = response.data.score
       this.updateService.date = response.data.date
       this.updateService.newPrice = response.data.newPrice
       this.updateService.isOffer = response.data.isOffer
+      console.log("===============")
+      console.log(response.data)
     })
   },
   methods: {
@@ -236,6 +248,7 @@ export default {
           location: this.updateService.location,
           creationDate: "5/3/2019",
           photos: this.updateService.photos,
+          video: this.updateService.video,
           description: this.updateService.description,
           isOffer: this.updateService.isOffer,
           agencyId: this.updateService.agencyId
@@ -266,6 +279,7 @@ export default {
       this.updateService.location = '';
       this.updateService.isOffer =  0;
       this.updateService.photos =  '';
+      this.updateService.video =  '';
       this.updateService.description = '';
     },
     saveActivity(){

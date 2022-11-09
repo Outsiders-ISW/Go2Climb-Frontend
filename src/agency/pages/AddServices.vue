@@ -57,6 +57,14 @@
                     hide-details
                     required
                     outlined
+                    class="rounded-0">
+                </v-text-field>
+                <v-text-field
+                    v-model="newService.video"
+                    placeholder="Reference video (optional)"
+                    solo dense
+                    hide-details
+                    outlined
                     class="rounded-br-xl rounded-t-0 rounded-l-0">
                 </v-text-field>
               </v-col>
@@ -188,6 +196,7 @@ export default {
       isOffer: 0,
       photos: '',
       description: '',
+      video: ''
     },
     activity: {
       name: '',
@@ -219,7 +228,8 @@ export default {
           photos: this.newService.photos,
           description: this.newService.description,
           isOffer: isOffer,
-          agencyId: this.newService.agencyId
+          agencyId: this.newService.agencyId,
+          video: this.newService.video
         };
 
         await ServicesService.create(newServiceDto)
@@ -245,6 +255,7 @@ export default {
       this.newService.isOffer =  0;
       this.newService.photos =  '';
       this.newService.description = '';
+      this.newService.video = '';
     },
     saveActivity(){
       if (this.validateFormActivities()) {
