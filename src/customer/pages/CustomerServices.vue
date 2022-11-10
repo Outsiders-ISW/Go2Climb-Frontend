@@ -4,13 +4,19 @@
       <v-data-table :headers="headers" :items="hiredServices" sort-by="name" class="elevation-1">
     <template v-slot:top>
       <ServiceReview v-bind:service="service" v-bind:dialogService="dialogService" v-on:dialog-service-false="setCustomerReview" v-on:dialog-continue="setAgencyReview"></ServiceReview>
+      <ReportService v-bind:service="service" v-bind:dialog-report="dialogReport" v-on:dialog-service-false="reportService"></ReportService>
       <AgencyReview v-bind:service="service" v-bind:dialogAgency="dialogAgency" v-on:dialog-agency-false="closeForm"></AgencyReview>
     </template>
     <template v-slot:item.actions="{ item }">
       <v-btn v-if="item.status === 'pending'" color="primary" rounded small disabled>Rate service</v-btn>
-      <v-btn v-else color="primary" rounded small @click="setCustomerReview(item)">
-        Rate service
-      </v-btn>
+      <div v-else>
+        <v-btn class="ma-1" color="primary" rounded small @click="setCustomerReview(item)">
+          Rate service
+        </v-btn>
+        <v-btn class="ma-1" color="primary" rounded small @click="reportService(item)">
+          Report service
+        </v-btn>
+      </div>
     </template>
   </v-data-table>
     </v-col>
@@ -34,13 +40,15 @@
 import CustomersService from '../services/customers.service'
 import ServiceReview from '../pages/ServiceReview'
 import AgencyReview from '../pages/AgencyReview'
+import ReportService from "@/customer/pages/ReportService";
 export default {
   name: "CustomerServices",
-  components: {ServiceReview, AgencyReview},
+  components: {ReportService, ServiceReview, AgencyReview},
   data: () => ({
     errors: [],
     hiredServices: [],
     dialogService: false,
+    dialogReport: false,
     dialogAgency: false,
     service: [],
     headers: [
@@ -63,6 +71,10 @@ export default {
     },
     setCustomerReview(item) {
       this.dialogService = !this.dialogService;
+      this.service = item;
+    },
+    reportService(item) {
+      this.dialogReport = !this.dialogReport;
       this.service = item;
     },
     setAgencyReview() {
