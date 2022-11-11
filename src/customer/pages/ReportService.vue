@@ -75,6 +75,7 @@ export default {
     continueForm: function () {
       this.$refs.form.reset();
       this.dialogContinue = false;
+      this.closeForm();
       //this.$emit('dialog-continue');
     },
     validateForm() {
@@ -97,12 +98,14 @@ export default {
         };
         console.log(saveReport);
         await ReportServiceService.create(saveReport)
-            .then(response => {
-              if (response.status === 200) this.setDialogContinue();
+            .then(() => {
+              this.setDialogContinue();
             })
             .catch(e => {
+              this.setDialogContinue();
               this.errors.push(e.message);
             });
+        this.$router.go(0);
       }
     }
   }
