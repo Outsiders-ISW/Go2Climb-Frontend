@@ -44,6 +44,17 @@
                           </template>
                           <p>{{ service.name }}</p>
                         </v-tooltip>
+                        <v-tooltip v-if="service.healthInsurance !== '' && service.healthInsurance !== undefined" bottom>
+                          <template v-slot:activator="{ on, attrs }">
+                            <a class="text-decoration-none font-weight-bold">
+                              <v-icon
+                                  v-bind="attrs"
+                                  v-on="on"
+                              >mdi-hospital-box</v-icon>
+                            </a>
+                          </template>
+                          <p>This service covers Health Insurance</p>
+                        </v-tooltip>
                         <v-card-text class="d-flex flex-column align-center">
                           <v-row align="center" class="mx-0">
                             <a class="text-decoration-none">
@@ -103,6 +114,18 @@
                           </template>
                           <p>{{ service.name }}</p>
                         </v-tooltip>
+                        <v-tooltip v-if="service.healthInsurance !== '' && service.healthInsurance !== undefined" bottom>
+                          <template v-slot:activator="{ on, attrs }">
+                            <a class="text-decoration-none font-weight-bold">
+                              <v-icon
+                                  v-bind="attrs"
+                                  v-on="on"
+                              >mdi-hospital-box</v-icon>
+                            </a>
+                          </template>
+                          <p>This service covers Health Insurance</p>
+                        </v-tooltip>
+
                         <v-card-text class="d-flex flex-column align-center">
                           <v-row align="center" class="mx-0">
                             <a class="text-decoration-none">
@@ -158,6 +181,17 @@
                             </a>
                           </template>
                           <p>{{ service.name }}</p>
+                        </v-tooltip>
+                        <v-tooltip v-if="service.healthInsurance !== '' && service.healthInsurance !== undefined" bottom>
+                          <template v-slot:activator="{ on, attrs }">
+                            <a class="text-decoration-none font-weight-bold">
+                              <v-icon
+                                  v-bind="attrs"
+                                  v-on="on"
+                              >mdi-hospital-box</v-icon>
+                            </a>
+                          </template>
+                          <p>This service covers Health Insurance</p>
                         </v-tooltip>
                         <v-card-text class="d-flex flex-column align-center">
                           <v-row align="center" class="mx-0">

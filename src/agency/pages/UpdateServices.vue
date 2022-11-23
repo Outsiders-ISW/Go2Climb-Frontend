@@ -152,6 +152,15 @@
               </div>
             </v-col>
           </v-form>
+          <v-row class="px-4">
+            <v-col cols="12">
+              <v-card-subtitle class="font-weight-black mx-0 mt-5 pa-0">Other information</v-card-subtitle>
+            </v-col>
+            <v-col cols="12" class="col-lg-12 d-flex flex-column">
+              <p class="py-0">Health Insurance (optional)</p>
+              <v-text-field required outlined solo v-model="updateService.healthInsurance" color="primary" placeholder="Write if your service covers Health Insurance" min="0" dense class="rounded-xl"></v-text-field>
+            </v-col>
+          </v-row>
           <v-card-actions class="mt-8 mb-4">
             <v-spacer></v-spacer>
             <v-btn min-width="150" class="mr-2" color="secondary" rounded @click="cancelUpdateService">Cancel</v-btn>
@@ -203,6 +212,7 @@ export default {
       description: '',
       date: null,
       score: 0,
+      healthInsurance: ''
     },
     activity: {
       name: '',
@@ -224,6 +234,7 @@ export default {
       this.updateService.date = response.data.date
       this.updateService.newPrice = response.data.newPrice
       this.updateService.isOffer = response.data.isOffer
+      this.updateService.healthInsurance = response.data.healthInsurance
       console.log("===============")
       console.log(response.data)
     })
@@ -251,7 +262,8 @@ export default {
           video: this.updateService.video,
           description: this.updateService.description,
           isOffer: this.updateService.isOffer,
-          agencyId: this.updateService.agencyId
+          agencyId: this.updateService.agencyId,
+          healthInsurance: this.updateService.healthInsurance
         };
         console.log(updateServiceDto)
 
@@ -281,6 +293,7 @@ export default {
       this.updateService.photos =  '';
       this.updateService.video =  '';
       this.updateService.description = '';
+      this.updateService.healthInsurance = '';
     },
     saveActivity(){
       if (this.validateFormActivities()) {

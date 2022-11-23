@@ -156,12 +156,13 @@
               <v-card min-height="175px" class="py-4 px-8 mb-4 rounded-lg">
                 <v-list>
                   <header class="title font-weight-bold pl-0">Good to Know</header>
-                  <div v-if="service.description.length > 0">
-                    <v-subheader class="pa-0">{{service.description}}</v-subheader>
+                  <div v-if="service.healthInsurance !== '' && service.healthInsurance !== undefined">
+                    <v-subheader class="pa-0">The service covers Health Insurance: {{service.healthInsurance}}</v-subheader>
                   </div>
                   <div v-else>
-                    <v-subheader class="pa-0">Description of the service not yet available.</v-subheader>
+                    <v-subheader class="pa-0">There is no more information</v-subheader>
                   </div>
+
                 </v-list>
               </v-card>
             </v-col>

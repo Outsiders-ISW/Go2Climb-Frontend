@@ -152,6 +152,15 @@
               </div>
             </v-col>
           </v-form>
+          <v-row class="px-4">
+            <v-col cols="12">
+              <v-card-subtitle class="font-weight-black mx-0 mt-5 pa-0">Other information</v-card-subtitle>
+            </v-col>
+            <v-col cols="12" class="col-lg-12 d-flex flex-column">
+              <p class="py-0">Health Insurance (optional)</p>
+              <v-text-field required outlined solo v-model="newService.healthInsurance" color="primary" placeholder="Write if your service covers Health Insurance" min="0" dense class="rounded-xl"></v-text-field>
+            </v-col>
+          </v-row>
           <v-card-actions class="mt-8 mb-4">
             <v-spacer></v-spacer>
             <v-btn min-width="150" class="mr-2" color="secondary" rounded @click="cancelAddService">Cancel</v-btn>
@@ -196,7 +205,8 @@ export default {
       isOffer: 0,
       photos: '',
       description: '',
-      video: ''
+      video: '',
+      healthInsurance: ''
     },
     activity: {
       name: '',
@@ -229,7 +239,8 @@ export default {
           description: this.newService.description,
           isOffer: isOffer,
           agencyId: this.newService.agencyId,
-          video: this.newService.video
+          video: this.newService.video,
+          healthInsurance: this.newService.healthInsurance
         };
 
         await ServicesService.create(newServiceDto)
@@ -256,6 +267,7 @@ export default {
       this.newService.photos =  '';
       this.newService.description = '';
       this.newService.video = '';
+      this.newService.healthInsurance = '';
     },
     saveActivity(){
       if (this.validateFormActivities()) {
